@@ -1,0 +1,22 @@
+﻿@model Rootobject
+@{    
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+@*    <h1 class="display-4">Card Draw</h1>
+    <h2>Success: @Model.success</h2>
+    <h2>Deck Id: @Model.deck_id</h2>
+    <h2>Remaining: @Model.remaining</h2>*@
+    
+   Deck ID: @Model.deck_id<br />
+   Remaining Cards: @Model.remaining<br />
+   
+    @foreach(var test in Model.cards)
+    {
+        <p>Code: @test.code</p>
+        <p>Suit: @test.suit</p>
+        <p>Value: @test.value</p>
+        <img src="@test.image">
+    }
+</div>
