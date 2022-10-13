@@ -24,16 +24,16 @@ namespace DeckOfCardsAPI.Controllers
 
             return View(member2);
         }
+        //Lets have the user draw again
+        public async Task<IActionResult> Draw(string deck_id)
+        {
+            HttpClient web = new HttpClient(); //Opens the connection 
+            web.BaseAddress = new Uri("https://www.deckofcardsapi.com/"); //Connects us to the website 
+            var connection = await web.GetAsync($"api/deck/{deck_id}/draw/?count=5"); //Gets information
+            Rootobject member2 = await connection.Content.ReadAsAsync<Rootobject>(); //Returns information 
+            return View("Index", member2);
 
-        //public async Task<IActionResult>Draw()
-        //{
-        //    HttpClient web = new HttpClient(); //Opens the connection 
-        //    web.BaseAddress = new Uri("https://www.deckofcardsapi.com/"); //Connects us to the website 
-        //    var connection = await web.GetAsync($"api/deck/{}/draw/?count=2"); //Gets information
-        //    Card member2 = await connection.Content.ReadAsAsync<Card>(); //Returns information 
-        //    return View(member2);
-           
-        //}
+        }
 
         public IActionResult Privacy()
         {

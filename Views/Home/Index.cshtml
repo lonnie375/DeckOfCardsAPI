@@ -14,9 +14,12 @@
    
     @foreach(var test in Model.cards)
     {
-        <p>Code: @test.code</p>
-        <p>Suit: @test.suit</p>
-        <p>Value: @test.value</p>
+   
         <img src="@test.image">
     }
+</div>
+
+<div class="text-center">
+   <!--Lets pull additional cards again-->
+   <a href="/home/draw?deck_id=@Model.deck_id">Draw Again</a>
 </div>
